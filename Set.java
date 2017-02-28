@@ -8,11 +8,22 @@
 * I attest that the following code being submitted is my own individual
 work.
 */
-
+/**
+ * 
+ * @author Will
+ * @version 1.0.0
+ * This is the project that is able to create and modify the sets of array.
+ */
 public class Set {												// Create a class called "Set"
 
 	private final String s[] = new String[10];					// Declaration of String array (only can contain 10 elements)
-
+	
+	/**
+	 * This is the constructor of the class.
+	 * It takes a string array as parameter.
+	 * If the input is legal, then it will put the elements into the set
+	 * @param s
+	 */
 	public Set(String[] s) {									// Constructor
 		for (int i = 0; i < s.length; i++) {					// Loop through all the elements in the array, and put them in the set 
 			if (s.length == 1 && s[0].equals("")) {				// If we got an empty input
@@ -22,7 +33,10 @@ public class Set {												// Create a class called "Set"
 			}
 		}
 	}
-
+	/**
+	 * This method counts and returns the number of elements in the set array
+	 * @return count - the number of elements within the set
+	 */
 	public int getCount() {										// Create getCount method
 		int count = 0;
 		for (int i = 0; i < s.length; i++) {					// Count the number of non-empty elements
@@ -32,7 +46,9 @@ public class Set {												// Create a class called "Set"
 		}
 		return count;											// Return count
 	}
-
+	/**
+	 * This method converts the set to string
+	 */
 	public String toString() {									// Create toString method
 		String array = "{";
 		for (int i = 0; i < this.getCount(); i++) {				// Put set elements into string in {...,...} form
@@ -47,7 +63,11 @@ public class Set {												// Create a class called "Set"
 		array += "}";
 		return array;											// Return array
 	}
-
+	/**
+	 * This method combine two sets of characters 
+	 * @param s2 - the other set array for combining
+	 * @return returns a new set which contains both input arrays
+	 */
 	public Set SetUnion(Set s2) {								// Create SetUnion method
 		int index = 0;
 		String[] a3 = new String[10];							// Create a array to store resulting elements
@@ -70,7 +90,12 @@ public class Set {												// Create a class called "Set"
 		Set s3 = new Set(a3);
 		return s3;
 	}
-
+	/**
+	 * This method checks if the selected set contains the string elements
+	 * @param s - the selected set array
+	 * @param Element - the string element that needs to be checked 
+	 * @return returns true if the element has been found within the selected set array
+	 */
 	public static boolean Exists(String[] s, String Element) {	// Create a boolean to check duplicate
 		int check = 0;
 		boolean exist = true;
@@ -84,7 +109,11 @@ public class Set {												// Create a class called "Set"
 		}
 		return exist;											// Return true if the element is existed in the given array
 	}
-
+	/**
+	 * This method takes another set array and check the shared elements that appear in both set array and put them into a new array
+	 * @param s2 - another set array
+	 * @return returns the new set array with shared elements 
+	 */
 	public Set SetIntersection(Set s2) {						// Create Intersection method 
 		String[] a3 = new String[10];							// Create an array to store non-duplicate elements
 		int index = 0;
@@ -101,7 +130,11 @@ public class Set {												// Create a class called "Set"
 		Set s3 = new Set(a3);									// Create a new set for resulting array
 		return s3;												// Return the set
 	}
-
+	/**
+	 * This method is to check the difference of elements between 2 set arrays 
+	 * @param s2 - the another set array
+	 * @return returns a new set array contains all distinct elements from 2 arrays
+	 */
 	public Set SetDifference(Set s2) {							// Create a SetDifference method
 		String[] a3 = new String[10];							// Create resulting array
 		int index = 0;
@@ -137,7 +170,11 @@ public class Set {												// Create a class called "Set"
 		Set s3 = new Set(a3);									// Create a set for resulting array
 		return s3;												// Return the set
 	}
-
+	/**
+	 * This method is to combine the elements from 2 set arrays into pairs of two
+	 * @param s2 - the another set array
+	 * @return returns the new string that contains all possible pairs
+	 */
 	public String SetProduct(Set s2) {							// Create SetProduct method
 		String[] Array = new String[(this.getCount() * s2.getCount())];
 		String result = "";
@@ -155,7 +192,11 @@ public class Set {												// Create a class called "Set"
 		}
 		return result;											// Return a string include all possible pairs from 2 arrays
 	}
-
+	/**
+	 * This method checks if the input set is the subset of the original set
+	 * @param s2 - the another set array
+	 * @return returns true if the input set is the subset
+	 */
 	public boolean isSubset(Set s2) {							// Create isSubset method
 		int count = 0;
 		boolean Subset = true;									// Declare a boolean
@@ -172,7 +213,11 @@ public class Set {												// Create a class called "Set"
 		}
 		return Subset;											// Return true/false
 	}
-
+	/**
+	 * This method is to check if the 2 set arrays are equal to each other
+	 * @param s2 - the another set array
+	 * @return returns true if the sets are equal
+	 */
 	public boolean isEqual(Set s2) {							// Create isEqual method						
 		boolean isEqual = false;
 		if (s2.isSubset(this) && this.isSubset(s2)) {			// Use Subset to check equal set
@@ -180,11 +225,18 @@ public class Set {												// Create a class called "Set"
 		}
 		return isEqual;
 	}
-
+	/**
+	 * This method is to return the string character if it is legal
+	 * @param obj - object 
+	 * @return returns the object if it can be presented as a string 
+	 */
 	public static String valueOf(Object obj) {					// Create a method to compare boolean with string
 		return (obj == null) ? "null" : obj.toString();
 	}
-
+	/**
+	 * This method is to check if the set contains only distinct elements 
+	 * @return return true if it only contains unique elements 
+	 */
 	public int getCardinality() {								// Create getCardinality method
 		int count = 0;
 		int unique = 0;
@@ -203,3 +255,6 @@ public class Set {												// Create a class called "Set"
 	}
 
 }
+
+/* The code has been complete at this stage. Require permission for further changes. 
+*/
